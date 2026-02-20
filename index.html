@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Invitation de Parrainage - 5.7 Cembassoise</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bordeaux: #4a0404;
+            --bordeaux-dark: #2d0202;
+            --transition-speed: 1s;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: transform var(--transition-speed) cubic-bezier(0.65, 0, 0.35, 1), opacity var(--transition-speed);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* SECTION 1 : ENTREE */
+        #section1 {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://i.ibb.co/HDKHbwtJ/IMG-20260220-WA0054.jpg') center/cover;
+        }
+
+        .casino-title {
+            font-family: 'Cinzel', serif;
+            color: white;
+            font-size: clamp(3rem, 10vw, 5rem);
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .btn-enter {
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            transition: 0.3s;
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        .btn-enter:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* SECTION 2 : FOND BORDEAUX */
+        #section2 {
+            background: radial-gradient(circle, var(--bordeaux), var(--bordeaux-dark));
+        }
+
+        .gold-text {
+            color: var(--gold);
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            max-width: 85%;
+            line-height: 1.6;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.8s ease-out;
+            margin-bottom: 15px;
+        }
+
+        .show-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SECTION 3 : JETONS ET CARTES */
+        #section3 {
+            background: linear-gradient(rgba(45, 2, 2, 0.7), rgba(45, 2, 2, 0.7)), 
+                        url('https://i.ibb.co/rfX4sc7s/IMG-20260220-WA0053.jpg') center/cover;
+        }
+
+        /* SECTION 4 : OSCAR FINAL */
+        #section4 {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://i.ibb.co/0V2zdV5Y/IMG-20260220-WA0056.jpg') center/cover;
+        }
+
+        .hidden-up { transform: translateY(-100%); }
+        .hidden-down { transform: translateY(100%); }
+
+    </style>
+</head>
+<body>
+
+    <section id="section1" class="page active">
+        <h1 class="casino-title">CASINO</h1>
+        <a href="#" class="btn-enter" onclick="nextSection(1)">Entrez</a>
+    </section>
+
+    <section id="section2" class="page hidden-down">
+        <div id="msg1" class="gold-text">
+            <p class="fade-in-text">L'attente touche à sa fin !!!</p>
+            <p class="fade-in-text">Le grand jour est arrivé et nous serions heureux de le partager avec toi</p>
+        </div>
+        <div id="msg2" class="gold-text" style="display:none; opacity: 0;">
+            <p class="fade-in-text">Tu es cordialement invité à la soirée de parrainage de la 5.7 cembassoise</p>
+        </div>
+    </section>
+
+    <section id="section3" class="page hidden-down">
+        <div class="gold-text">
+            <p class="fade-in-text">Sous le thème...</p>
+            <p class="fade-in-text" style="font-family: 'Cinzel'; font-size: 1.5em; letter-spacing: 3px;">Casino Night & Oscar Winning</p>
+        </div>
+    </section>
+
+    <section id="section4" class="page hidden-down">
+        <div class="gold-text">
+            <h2 class="fade-in-text" style="font-family: 'Cinzel'; letter-spacing: 4px; margin-bottom: 10px;">Rendez-vous le 11.04.26</h2>
+            <p class="fade-in-text" style="font-size: 1.3em; margin: 5px 0;">Au Pont Emana dès 20h</p>
+            <p class="fade-in-text" style="font-size: 1.1em; font-style: italic; opacity: 0.9;">Au Complexe Las Vegas</p>
+        </div>
+    </section>
+
+    <script>
+        function nextSection(current) {
+            const s1 = document.getElementById('section1');
+            const s2 = document.getElementById('section2');
+            const s3 = document.getElementById('section3');
+            const s4 = document.getElementById('section4');
+
+            if(current === 1) {
+                s1.classList.remove('active');
+                s1.classList.add('hidden-up');
+                s2.classList.remove('hidden-down');
+                s2.classList.add('active');
+                
+                animateText('msg1', () => {
+                    setTimeout(() => {
+                        const m1 = document.getElementById('msg1');
+                        const m2 = document.getElementById('msg2');
+                        m1.style.transition = "opacity 1s";
+                        m1.style.opacity = "0";
+                        
+                        setTimeout(() => {
+                            m1.style.display = 'none';
+                            m2.style.display = 'block';
+                            setTimeout(() => { m2.style.opacity = "1"; }, 50);
+                            animateText('msg2', () => {
+                                setTimeout(() => nextSection(2), 3500);
+                            });
+                        }, 1000);
+                    }, 2500);
+                });
+            } else if (current === 2) {
+                s2.classList.remove('active');
+                s2.classList.add('hidden-up');
+                s3.classList.remove('hidden-down');
+                s3.classList.add('active');
+                animateText('section3', () => {
+                    setTimeout(() => nextSection(3), 4000);
+                });
+            } else if (current === 3) {
+                s3.classList.remove('active');
+                s3.classList.add('hidden-up');
+                s4.classList.remove('hidden-down');
+                s4.classList.add('active');
+                animateText('section4');
+            }
+        }
+
+        function animateText(containerId, callback) {
+            const container = document.getElementById(containerId);
+            const lines = container.querySelectorAll('.fade-in-text');
+            lines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.classList.add('show-text');
+                    if(index === lines.length - 1 && callback) callback();
+                }, index * 1000); 
+            });
+        }
+    </script>
+</body>
+</html>
